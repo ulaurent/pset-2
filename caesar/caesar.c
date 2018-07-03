@@ -2,6 +2,7 @@
 #include <cs50.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 int main (int argc, string argk[]){
     string phrase;
@@ -18,12 +19,21 @@ int main (int argc, string argk[]){
    phrase = get_string("What is your phrase: ");
 
    for (int j =0; j < strlen(phrase); j++){
-       //printf("%c %i",phrase[j], (int)phrase[j]);
-       int fix = (((int)phrase[j]) + i);
-       char fix2 = (phrase[j]+i);
-       printf("%c %i\n",fix2, fix);
+       if(islower(phrase[j])){
+           char fix = ((((phrase[j]+i)-97)%26)+97);
+           printf("%c", fix);
+       }
+       else if (isupper(phrase[j])){
+           char fix2 = ((((phrase[j]+i)-65)%26)+65);
+           printf("%c", fix2);
+       }
+       else{
+           printf("%c", (phrase[j]));
+       }
 
    }
+
+   printf("\n");
 
 
 }
