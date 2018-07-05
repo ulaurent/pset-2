@@ -20,4 +20,10 @@ int main(int argc, string argk[]){
        printf((((plaintext[j]+argk[1][k])-97)%26)+97);
         }
     }
+    
+    for (int j = 0; j < strlen(plaintext); j++){
+        for (int k = 0; k < strlen(argk); k++){
+       printf((((plaintext[j]+argk[1][k])-97)%26)+97);
+        }
+    }
 }
