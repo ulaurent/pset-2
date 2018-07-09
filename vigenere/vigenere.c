@@ -16,12 +16,6 @@ int main(int argc, string argk[]){
         }
 
 
-    plaintext = get_string("Your plaintext: ");
-    printf("your key length: %lu\n", strlen(argk[1]));
-    printf("plaintext first letter ASCII#: %i\n",plaintext[0]);
-    printf("here:%i\n", (argk[1][(plaintext[0] % strlen(argk[1]))]));
-    printf("whats this: %i\n", (((argk[1][(plaintext[1] % strlen(argk[1]))])-65)%26));
-
     int j = 0;
 
     for(int i=0 ; i < strlen(plaintext); i++){
