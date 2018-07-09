@@ -22,29 +22,33 @@ int main(int argc, string argk[]){
     printf("here:%i\n", (argk[1][(plaintext[0] % strlen(argk[1]))]));
     printf("whats this: %i\n", (((argk[1][(plaintext[1] % strlen(argk[1]))])-65)%26));
 
+    int j = 0;
+
     for(int i=0 ; i < strlen(plaintext); i++){
+
+        j = j % strlen(argk[1]);
 
         if(isalpha(plaintext[i])){
 
             if(islower(plaintext[i])){
-                char fix = ((((plaintext[i]+(argk[1][(plaintext[i] % strlen(argk[1]))]))-97)%26)+97);
+                char fix = (((plaintext[i]-97)+(argk[1][j]-97))%26)+97;
                 printf("%c", fix);
             }
             else if (isupper(plaintext[i])){
-                char fix2 = (plaintext[i]+(((argk[1][(plaintext[i] % strlen(argk[1]))])-65)%26));
+                char fix2  = (((plaintext[i]-65)+(argk[1][j]-65))%26)+65;
                 printf("%c", fix2);
             }
+
+            j++;
+        }
+
             else{
                 printf("%c", (plaintext[i]));
             }
 
-            }
-        else {
-            printf("(not character)");
-        }
+
     }
 
     printf("\n");
 
 }
-
