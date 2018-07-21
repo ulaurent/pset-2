@@ -13,8 +13,9 @@ int main(int argc, string argk[]){
     }
     else{
         printf("ERORR INVALID INPUT\n");
-        }
+    }
 
+    plaintext = get_string("What is your text: ");
 
     int j = 0;
 
@@ -46,3 +47,11 @@ int main(int argc, string argk[]){
     printf("\n");
 
 }
+
+
+
+
+
+
+
+
