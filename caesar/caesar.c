@@ -1,39 +1,65 @@
-#include <stdio.h>
 #include <cs50.h>
+#include <ctype.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h>
 
-int main (int argc, string argk[]){
-    string phrase;
-    if(argc > 1 && argc <= 2){
-        printf("hello: %s \n", argk[1]);
-    }
-    else {
-        printf("Invalid input");
+int main(int argc, string argv[])
+{
+    if (argc != 2)
+    {
+        printf("Argument Error\n");
+        return 1;
     }
 
-   int i = atoi(argk[1]);
-   printf("Your key is %i\n", i);
 
-   phrase = get_string("What is your phrase: ");
+    int num = atoi(argv[1]) % 26;
 
-   for (int j =0; j < strlen(phrase); j++){
-       if(islower(phrase[j])){
-           char fix = ((((phrase[j]+i)-97)%26)+97);
-           printf("%c", fix);
-       }
-       else if (isupper(phrase[j])){
-           char fix2 = ((((phrase[j]+i)-65)%26)+65);
-           printf("%c", fix2);
-       }
-       else{
-           printf("%c", (phrase[j]));
-       }
+    // Accept phrase
+    string phrase = get_string("phrase: ");
+    printf("ciphertext: ");
 
-   }
+    // Loop to iterate over each index of phrase
+    for (int i = 0; i < strlen(phrase); i++)
+    {
+        //If alpha, change it, if not carry on
+        if (isalpha(phrase[i]))
+        {
+            int beg = 0;
+            int end = 0;
 
-   printf("\n");
+            //If uppercase set Beginning and End
+            if (isupper(phrase[i]))
+            {
+                beg = 'A';
+                end = 'Z';
+            }
+            // else If lowercase set Beginning and end to..
+            else if (islower(phrase[i]))
+            {
+                beg = 'a';
+                end = 'z';
+            }
 
 
+            if (phrase[i] + num > end)
+            {
+                printf("%c", (beg + phrase[i] + num - end - 1));
+
+            }
+
+            else
+            {
+                printf("%c", phrase[i] + num);
+            }
+        }
+
+        //Else , just print if not alpha
+        else
+        {
+            printf("%c", phrase[i]);
+        }
+    }
+    printf("\n");
+    return 0;
 }
